@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#101827">>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>PACERIDGE - Productivity</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">▲</div>
+        <span>PACERIDGE</span>
+      </div>
+
+      <p class="menu-label">WORKSPACE</p>
+
+      <nav>
+        <a href="#dashboard" class="nav-link active">⌂ Dashboard</a>
+        <a href="#tasks" class="nav-link">☑ My Tasks</a>
+        <a href="#planner" class="nav-link">▦ Daily Planner</a>
+        <a href="#goals" class="nav-link">◎ My Goals</a>
+        <a href="#focus" class="nav-link">◷ Focus Timer</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="mini-profile">
+          <div class="avatar">P</div>
+          <div>
+            <strong>My Workspace</strong>
+            <small>Keep progressing</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">YOUR PRODUCTIVITY SPACE</p>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="date-display" id="todayDate"></div>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <span class="welcome-tag">YOUR NEXT CHAPTER STARTS HERE</span>
+          <h2>Make today<br>count.</h2>
+          <p>Small steps. Consistent progress. Bigger achievements.</p>
+        </div>
+        <div class="welcome-symbol">▲</div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon">☑</span>
+          <p>Completed tasks</p>
+          <h2 id="completedCount">0</h2>
+          <small>Tasks finished</small>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon">◷</span>
+          <p>Pending tasks</p>
+          <h2 id="pendingCount">0</h2>
+          <small>Still to complete</small>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon">◎</span>
+          <p>Daily progress</p>
+          <h2 id="progressPercent">0%</h2>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+
+        <div class="panel tasks-panel" id="tasks">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">STAY ORGANised</p>
+              <h2>My Tasks</h2>
+            </div>
+            <span class="count-badge" id="taskBadge">0 tasks</span>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <input
+              type="text"
+              id="taskInput"
+              placeholder="What do you need to do?"
+              maxlength="100"
+              required
+            >
+            <button type="submit">+ Add</button>
+          </form>
+
+          <div id="taskList" class="task-list">
+            <p class="empty-message">No tasks yet. Add your first task!</p>
+          </div>
+        </div>
+
+        <div class="panel goals-panel" id="goals">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">THINK BIGGER</p>
+              <h2>My Goals</h2>
+            </div>
+            <span class="goal-icon">◎</span>
+          </div>
+
+          <p class="goal-description">
+            Every achievement begins with a goal.
+          </p>
+
+          <form id="goalForm" class="goal-form">
+            <input
+              type="text"
+              id="goalInput"
+              placeholder="Enter a personal goal..."
+              maxlength="100"
+              required
+            >
+            <button type="submit">Add Goal</button>
+          </form>
+
+          <div id="goalList" class="goal-list">
+            <p class="empty-message">Your goals will appear here.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="bottom-grid">
+
+        <div class="panel planner-panel" id="planner">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">PLAN AHEAD</p>
+              <h2>Daily Planner</h2>
+            </div>
+            <span class="planner-icon">▦</span>
+          </div>
+
+          <div class="planner-item">
+            <span class="time">MORNING</span>
+            <strong>Start your day</strong>
+            <small>Organise your priorities</small>
+          </div>
+
+          <div class="planner-item">
+            <span class="time">AFTERNOON</span>
+            <strong>Make progress</strong>
+            <small>Work on your important tasks</small>
+          </div>
+
+          <div class="planner-item">
+            <span class="time">EVENING</span>
+            <strong>Reflect and reset</strong>
+            <small>Prepare for tomorrow</small>
+          </div>
+        </div>
+
+        <div class="panel focus-panel" id="focus">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">STAY IN THE ZONE</p>
+              <h2>Focus Timer</h2>
+            </div>
+            <span class="focus-icon">◷</span>
+          </div>
+
+          <p class="focus-description">Take some time to concentrate.</p>
+
+          <div class="timer" id="timerDisplay">25:00</div>
+
+          <div class="timer-controls">
+            <button id="startTimer">Start</button>
+            <button id="resetTimer" class="secondary-button">Reset</button>
+          </div>
+
+          <small class="timer-note">25-minute focus session</small>
+        </div>
+
+      </section>
+
+      <footer>
+        <strong>PACERIDGE</strong>
+        <span>Stay focused. Keep climbing. ▲</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => console.error("Service worker error:", error));
+  });
+}
+</script>
+
+</body>
