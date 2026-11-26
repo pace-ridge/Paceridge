@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PACERIDGE V2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- AUTH / LOGIN SCREEN -->
+  <div id="authScreen" class="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-icon">▲</div>
+        <div>
+          <strong>PACERIDGE</strong>
+          <small class="eyebrow" style="margin:0;">YOUR PRODUCTIVITY SPACE</small>
+        </div>
+      </div>
+
+      <h1>Welcome back</h1>
+      <p class="auth-subtitle">Log in to continue your progress, or create an account.</p>
+
+      <form id="authForm" class="auth-form">
+        <input type="text" id="authIdentifier" placeholder="Email address or phone number" required />
+        <input type="password" id="authPassword" placeholder="Password" required />
+        <button type="submit" id="authSubmitBtn">Log in</button>
+      </form>
+
+      <div class="auth-actions">
+        <button type="button" id="toggleAuthMode" class="secondary-button">Create an account</button>
+        <button type="button" id="guestBtn" class="secondary-button">Continue as Guest</button>
+      </div>
+
+      <p id="authMessage" class="auth-message"></p>
+
+      <p class="auth-disclaimer">
+        This standalone demo keeps account data in this browser only. It does not verify email/phone numbers or sync between devices. Do not use a real or reused password here.
+      </p>
+    </div>
+  </div>
+
+  <!-- MAIN WORKSPACE -->
+  <div id="appContainer" class="app-container hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">▲</div>
+        <span>PACERIDGE</span>
+      </div>
+
+      <div class="menu-label">WORKSPACE</div>
+      <nav>
+        <a href="#dashboard" class="nav-link active">⌂ Dashboard</a>
+        <a href="#tasks" class="nav-link">☑ My Tasks</a>
+        <a href="#planner" class="nav-link">▦ Daily Planner</a>
+        <a href="#goals" class="nav-link">◎ My Goals</a>
+        <a href="#timer" class="nav-link">◷ Focus Timer</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="mini-profile">
+          <div class="avatar" id="userAvatar">G</div>
+          <div class="profile-info">
+            <strong id="userDisplay">My Workspace</strong>
+            <small>Keep progressing</small>
+          </div>
+          <button type="button" id="logoutBtn" class="logout-button">Log out</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">YOUR PRODUCTIVITY SPACE</span>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="date-display" id="todayDate"></div>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <span class="welcome-tag">YOUR NEXT CHAPTER STARTS HERE</span>
+          <h2>Make today count.</h2>
+          <p>Small steps. Consistent progress. Bigger achievements.</p>
+        </div>
+        <div class="welcome-symbol">▲</div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">☑</div>
+          <p>Completed tasks</p>
+          <h2 id="completedCount">0</h2>
+          <small>Tasks finished</small>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">◷</div>
+          <p>Pending tasks</p>
+          <h2 id="pendingCount">0</h2>
+          <small>Still to complete</small>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">◎</div>
+          <p>Daily progress</p>
+          <h2 id="progressPercent">0%</h2>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <!-- MY TASKS -->
+        <div class="panel" id="tasks">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">STAY ORGANISED</span>
+              <h2>My Tasks</h2>
+            </div>
+            <span class="count-badge" id="taskBadge">0 tasks</span>
+          </div>
+
+          <form class="task-form" id="taskForm">
+            <input type="text" id="taskInput" placeholder="Add a new task..." required />
+            <button type="submit">+ Add</button>
+          </form>
+
+          <div id="taskList"></div>
+        </div>
+
+        <!-- MY GOALS -->
+        <div class="panel" id="goals">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">THINK BIGGER</span>
+              <h2>My Goals</h2>
+            </div>
+            <span class="goal-icon">◎</span>
+          </div>
+
+          <p class="goal-description">Every achievement begins with a goal.</p>
+
+          <form class="goal-form" id="goalForm">
+            <input type="text" id="goalInput" placeholder="Enter a new goal..." required />
+            <button type="submit">Add Goal</button>
+          </form>
+
+          <div id="goalList"></div>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <!-- DAILY PLANNER -->
+        <div class="panel" id="planner">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">PLAN AHEAD</span>
+              <h2>Daily Planner</h2>
+            </div>
+            <span class="planner-icon">▦</span>
+          </div>
+
+          <div class="planner-item">
+            <span class="time">MORNING</span>
+            <strong>Start your day</strong>
+            <small>Organise your priorities</small>
+          </div>
+
+          <div class="planner-item">
+            <span class="time">AFTERNOON</span>
+            <strong>Make progress</strong>
+            <small>Work on your important tasks</small>
+          </div>
+
+          <div class="planner-item">
+            <span class="time">EVENING</span>
+            <strong>Reflect and reset</strong>
+            <small>Prepare for tomorrow</small>
+          </div>
+        </div>
+
+        <!-- FOCUS TIMER -->
+        <div class="panel" id="timer">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">STAY IN THE ZONE</span>
+              <h2>Focus Timer</h2>
+            </div>
+            <span class="focus-icon">◷</span>
+          </div>
+
+          <p class="focus-description">Choose how long you want to focus.</p>
+
+          <div class="timer" id="timerDisplay">25:00</div>
+
+          <div class="timer-controls">
+            <button type="button" id="startTimer">Start</button>
+            <button type="button" id="resetTimer" class="secondary-button">Reset</button>
+          </div>
+
+          <div class="timer-custom">
+            <label for="minutesInput">Minutes:</label>
+            <input type="number" id="minutesInput" value="25" min="1" max="180" />
+            <button type="button" id="setTimeBtn" class="secondary-button">Set time</button>
+          </div>
+
+          <span class="timer-note" id="timerNote">25-minute focus session</span>
+        </div>
+      </section>
+
+      <footer>
+        <div><strong>PACERIDGE</strong> Stay focused. Keep climbing. ▲</div>
+        <div>Version 2</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
